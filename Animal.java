@@ -1,7 +1,14 @@
 
 // TODO: extend Entity
 // TODO: make Animal abstract
-public class Animal {
+public abstract class Animal extends Entity{
+
+    protected int hunger;
+    protected boolean isSick;
+    public Animal(){
+        super("animal", 0, 0);
+        
+    }
 
     // TODO: instance variables
 
