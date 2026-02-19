@@ -1,3 +1,4 @@
+
 import java.awt.Graphics;
 
 public abstract class Entity {
@@ -8,6 +9,7 @@ public abstract class Entity {
     protected int x;
     protected int y;
     protected String name;
+    protected int age;
     
 
     // TODO: add the Entity instance variables
@@ -18,6 +20,7 @@ public abstract class Entity {
         this.name = name;
         this.x = x;
         this.y = y;
+        this.age = age;
     }
 
     public abstract void tick(Zoo z);
