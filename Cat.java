@@ -1,29 +1,39 @@
-
+import java.util.Random;
 import java.util.*;
 import java.awt.*;
 
 // TODO: extend Animal
-public class Cat {
+public class Cat extends Animal{
+    private int lives;
+    public Cat(String name, int x, int y, int hunger, boolean isSick){
+        super("animal", 0, 0, 0, false);
+        this.lives = 9;
+    }
 
-    // TODO: add instance variables
-
-    // TODO: add constructor
 
     // TODO: override the tick method
+    public void tick(Zoo zoo){
+        age++;
+        int chance = (int)Math.random()*101;
+        if (chance<=1){
+            lives--;
+        }else if(chance <=10 && isSick== true){
+            lives--;
+        }
+        if (lives <=0){
+            alive = false;
+            System.out.println("Cat "+name+"died of death");
+        }
+
+    }
 
     @Override
     public void draw(Graphics g) {
-        // two optional examples of a way to draw a cat follow!
 
-        //g.setColor(Color.DARK_GRAY);
-        //g.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 25));
-        //g.drawString("🐈", Zoo.wrap(xPos,Zoo.ZOO_COLS)*Zoo.SCALE, Zoo.wrap(yPos,Zoo.ZOO_ROWS)*Zoo.SCALE+25);
+        g.setColor(Color.DARK_GRAY);
+        g.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 25));
+        g.drawString("🐈", Zoo.wrap(x,Zoo.ZOO_COLS)*Zoo.SCALE, Zoo.wrap(y,Zoo.ZOO_ROWS)*Zoo.SCALE+25);
 
-        //g.setColor(Color.DARK_GRAY);
-        //g.setFont(new Font("Consolas", Font.PLAIN, 10));
-        //g.drawString(" ^-^ ", Zoo.wrap(xPos,Zoo.ZOO_COLS)*Zoo.SCALE, Zoo.wrap(yPos,Zoo.ZOO_ROWS)*Zoo.SCALE+5);
-        //g.drawString("/. .\\", Zoo.wrap(xPos,Zoo.ZOO_COLS)*Zoo.SCALE, Zoo.wrap(yPos,Zoo.ZOO_ROWS)*Zoo.SCALE+15);
-        //g.drawString("\\_o_/", Zoo.wrap(xPos,Zoo.ZOO_COLS)*Zoo.SCALE, Zoo.wrap(yPos,Zoo.ZOO_ROWS)*Zoo.SCALE+25);
     }
 
     // TODO: override the eat method
