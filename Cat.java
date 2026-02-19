@@ -37,6 +37,9 @@ public class Cat extends Animal{
     }
 
     // TODO: override the eat method
+    public void eat(Animal animal){
+        
+    }
     // TODO: override the move method
 
 
