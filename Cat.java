@@ -2,7 +2,6 @@ import java.util.Random;
 import java.util.*;
 import java.awt.*;
 
-// TODO: extend Animal
 public class Cat extends Animal{
     private int lives;
     public Cat(String name, int x, int y, int hunger, boolean isSick){
@@ -24,6 +23,7 @@ public class Cat extends Animal{
             alive = false;
             System.out.println("Cat "+name+"died of death");
         }
+        
 
     }
 
@@ -37,10 +37,42 @@ public class Cat extends Animal{
     }
 
     // TODO: override the eat method
-    public void eat(Animal animal){
-        
+    public void eat(Food food){
+        if (hunger > 25 && food.isVegtable){
+            if (Math.random()*101 > 99){
+                food.beEaten(this);
+                System.out.println(name+" the cat ate "+food.name+"getting "+food.nutrition+"nutrition points");
+            }
+        }
     }
     // TODO: override the move method
+    public boolean inBound(ArrayList<ArrayList<Entity>> grid, int x, int y){
 
+    }
+    public int[] check(Zoo zoo){
+    for(int a = this.y-1; a>this.y+1; a++){
+            for(int b = this.x-1; b>this.x+1; b++){
+                if ()
+            }
+        }
+    }
+    public void move(){
+        double direction=0.0;
+        if(){}
+        
+
+        }else{
+            direction=Math.random()*4;
+            if (direction<1){
+                y++;
+            }else if(direction<2){
+                x++;
+            }else if(direction<3&&y!=0){
+                y--;
+            }else if(direction<4&&x!=0){
+                x--;
+            }
+        }
+    }
 
 }
