@@ -1,4 +1,3 @@
-import java.util.Random;
 import java.util.*;
 import java.awt.*;
 
@@ -46,33 +45,48 @@ public class Cat extends Animal{
         }
     }
     // TODO: override the move method
-    public boolean inBound(ArrayList<ArrayList<Entity>> grid, int x, int y){
+    // public boolean inBound(ArrayList<ArrayList<Entity>> grid, int x, int y){
 
-    }
-    public int[] check(Zoo zoo){
-    for(int a = this.y-1; a>this.y+1; a++){
-            for(int b = this.x-1; b>this.x+1; b++){
-                if ()
+    // }
+    
+    public void move(Zoo zoo){
+        int randomX = (int) (Math.random()*3)-1;
+        int randomY = (int) (Math.random()*3)-1;
+        double directionX = 0.0;
+        double directionY = 0.0;
+        boolean animalNear = false;
+        if (age%10==0){
+            directionX+=randomX;
+            directionY+=randomY;
+            if (x==0){
+                directionY++;
+            }
+            if (y==0){
+                directionX++;
+            }
+            if (x==800){
+                directionY--;
+            }
+            if (y==600){
+                directionX--;
+            }
+
+            for (Entity e : zoo.at(x+(int)directionX, y+(int)directionY)){
+                if (e instanceof Animal){
+                    animalNear=true;
+                    if (e instanceof Cat){
+                        if (Math.random()<.89){
+                            for ()
+                            Cat cat = new Cat("baby cat", )
+                        }
+                    }
+                }
+            }
+            if (animalNear){
+
             }
         }
-    }
-    public void move(){
-        double direction=0.0;
-        if(){}
-        
-
-        }else{
-            direction=Math.random()*4;
-            if (direction<1){
-                y++;
-            }else if(direction<2){
-                x++;
-            }else if(direction<3&&y!=0){
-                y--;
-            }else if(direction<4&&x!=0){
-                x--;
-            }
-        }
+       
     }
 
 }
