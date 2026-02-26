@@ -54,8 +54,18 @@ public class Cat extends Animal{
         int randomY = (int) (Math.random()*3)-1;
         double directionX = 0.0;
         double directionY = 0.0;
-        boolean animalNear = false;
+        ArrayList<Entity> nearEntities = this.getNeighbors(zoo);
         if (age%10==0){
+            for (Entity e: nearEntities){
+                if (e instanceof Food){
+                    this.x=e.getX();
+                    this.y=e.getY();
+                    this.eat((Food)e);
+                }
+            }
+
+
+
             directionX+=randomX;
             directionY+=randomY;
             if (x==0){
@@ -70,19 +80,28 @@ public class Cat extends Animal{
             if (y==600){
                 directionX--;
             }
+            
+                
+
+
+
+
+
+
+
+
+
 
             for (Entity e : zoo.at(x+(int)directionX, y+(int)directionY)){
                 if (e instanceof Animal){
-                    animalNear=true;
                     if (e instanceof Cat){
                         if (Math.random()<.89){
-                            for ()
-                            Cat cat = new Cat("baby cat", )
+                            
+                            Cat cat = new Cat("baby cat", );
                         }
                     }
                 }
             }
-            if (animalNear){
 
             }
         }

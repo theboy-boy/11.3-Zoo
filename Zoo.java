@@ -109,6 +109,14 @@ public class Zoo extends JPanel {
         }
     }
 
+    public int getWidth(){
+        return width;
+    }
+
+    public int getHeight(){
+        return height;
+    }
+
     public static void main(String[] args) {
         // main Zoo object
         Zoo zoo = new Zoo(ZOO_COLS, ZOO_ROWS);
