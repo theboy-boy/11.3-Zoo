@@ -6,6 +6,8 @@ public class Cat extends Animal{
     public Cat(String name, int x, int y, int hunger, boolean isSick){
         super("animal", 0, 0, 0, false);
         this.lives = 9;
+        this.x=x;
+        this.y=y;
     }
 
 
@@ -13,15 +15,22 @@ public class Cat extends Animal{
     public void tick(Zoo zoo){
         age++;
         int chance = (int)Math.random()*101;
-        if (chance<=1){
+        if (chance>=1){
             lives--;
-        }else if(chance <=10 && isSick== true){
+            hunger=100;
+        }else if(chance >=10 && isSick== true){
             lives--;
         }
         if (lives <=0){
             alive = false;
             System.out.println("Cat "+name+"died of death");
         }
+        if (hunger<=0){
+            lives--;
+            hunger=100;
+            System.out.println("hungry");
+        }
+        hunger--;
         
 
     }
@@ -55,31 +64,39 @@ public class Cat extends Animal{
         double directionX = 0.0;
         double directionY = 0.0;
         ArrayList<Entity> nearEntities = this.getNeighbors(zoo);
-        if (age%10==0){
             for (Entity e: nearEntities){
                 if (e instanceof Food){
                     this.x=e.getX();
                     this.y=e.getY();
-                    this.eat((Food)e);
+                    if (hunger>=25&&Math.random()*101>1)                   
+                        this.eat((Food)e);
                 }
             }
-
-
-
             directionX+=randomX;
             directionY+=randomY;
-            if (x==0){
-                directionY++;
-            }
-            if (y==0){
+            if (x<=0){
                 directionX++;
             }
-            if (x==800){
-                directionY--;
+            if (y<=0){
+                directionY++;
             }
-            if (y==600){
+            if (x>=20){
                 directionX--;
             }
+            if (y>=10){
+                directionY--;
+            }
+            if (directionX<0){
+                x--;
+            }else if (directionX>0){
+                x++;
+            }
+            if (directionY<0){
+                y--;
+            }else if (directionY>0){
+                y++;
+            }
+
             
                 
 
@@ -92,19 +109,10 @@ public class Cat extends Animal{
 
 
 
-            for (Entity e : zoo.at(x+(int)directionX, y+(int)directionY)){
-                if (e instanceof Animal){
-                    if (e instanceof Cat){
-                        if (Math.random()<.89){
-                            
-                            Cat cat = new Cat("baby cat", );
-                        }
-                    }
-                }
-            }
+         
 
-            }
-        }
+            
+        
        
     }
 

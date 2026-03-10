@@ -9,8 +9,8 @@ import java.util.*;
 public class Zoo extends JPanel {
 
     // zoo grid size
-    public static final int ZOO_ROWS = 30; // grid height
-    public static final int ZOO_COLS = 40; // grid width
+    public static final int ZOO_ROWS = 1410; // grid height
+    public static final int ZOO_COLS = 2550; // grid width
     // screen size is the zoo grid sizes * SCALE
     public static final int SCALE = 30;
 
@@ -117,6 +117,20 @@ public class Zoo extends JPanel {
         return height;
     }
 
+
+    public ArrayList<Animal> getLivingEntities(){
+        ArrayList<Animal> animals = new ArrayList<Animal>();
+        for(int y = 0; y < height; y++) {
+            for(int x = 0; x < width; x++) {
+                for(Entity e : grid.get(y).get(x)) {
+                    if (e instanceof Animal){
+                        animals.add((Animal)e);
+                    }
+                }
+            }
+        }
+        return animals;
+    }
     public static void main(String[] args) {
         // main Zoo object
         Zoo zoo = new Zoo(ZOO_COLS, ZOO_ROWS);
@@ -142,8 +156,12 @@ public class Zoo extends JPanel {
             // TODO: add food and animals every 50, 100, 150, etc. ticks using tickCount and modulo (%)
 
             zoo.tick();
+            for(Animal a : zoo.getLivingEntities()){
+                a.move(zoo);
+            }
+            
             if (tickCount%50==0){
-                zoo.add();
+                zoo.add(new Cat("misses", 10, 1, 199, false));
             }
             // redraw the frame
             zoo.revalidate();
