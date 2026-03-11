@@ -157,11 +157,12 @@ public class Zoo extends JPanel {
 
             zoo.tick();
             for(Animal a : zoo.getLivingEntities()){
-                a.move(zoo);
+                //for fun
             }
             
             if (tickCount%50==0){
-                zoo.add(new Cat("misses", 10, 1, 199, false));
+                zoo.add(new Cat("misses", 10, 1, 100, false));
+                zoo.add(new Dog("MR.", 10, 1, 199, false));
             }
             // redraw the frame
             zoo.revalidate();

@@ -5,14 +5,18 @@ public class Cat extends Animal{
     private int lives;
     public Cat(String name, int x, int y, int hunger, boolean isSick){
         super("animal", 0, 0, 0, false);
-        this.lives = 9;
+        this.lives = 1000;
         this.x=x;
         this.y=y;
+        this.name=name;
     }
 
 
     // TODO: override the tick method
     public void tick(Zoo zoo){
+        if (age == 0){
+            System.out.println(name+" was born");
+        }
         age++;
         int chance = (int)Math.random()*101;
         if (chance>=1){
@@ -23,14 +27,18 @@ public class Cat extends Animal{
         }
         if (lives <=0){
             alive = false;
-            System.out.println("Cat "+name+"died of death");
+            System.out.println("Cat "+name+" died of death");
         }
         if (hunger<=0){
             lives--;
+            if (lives <= 0){
+                System.out.println("Cat "+name+" died of hunger. age:"+age);
+                alive = false;
+            }
             hunger=100;
-            System.out.println("hungry");
         }
         hunger--;
+        this.move(zoo);
         
 
     }
@@ -68,9 +76,16 @@ public class Cat extends Animal{
                 if (e instanceof Food){
                     this.x=e.getX();
                     this.y=e.getY();
-                    if (hunger>=25&&Math.random()*101>1)                   
+                    if (hunger>=25&&Math.random()*101>1){                   
                         this.eat((Food)e);
+                    }
                 }
+                if (e instanceof Animal){
+                    
+                }
+
+
+
             }
             directionX+=randomX;
             directionY+=randomY;
