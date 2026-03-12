@@ -31,7 +31,7 @@ public class Cheese extends Food {
         }
         if (nutrition == 5){
             animal.hunger+=5;
-            this.
+            this.alive=false;
         }
     }
 }
