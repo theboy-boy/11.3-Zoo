@@ -9,7 +9,7 @@ public class Cheese extends Food {
     }
     public void tick(Zoo zoo){
         age++;
-        if (age>=400){
+        if (age>=200){
             if (Math.random()*101<2){
                 rot = true;
             }
@@ -23,6 +23,9 @@ public class Cheese extends Food {
     public void beEaten(Animal animal){
         animal.hunger+=15;
         this.alive=false;
+        if (rot==true){
+            animal.isSick=true;
+        }
     }
 }
   
