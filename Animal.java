@@ -21,7 +21,7 @@ public abstract class Animal extends Entity{
         ArrayList<Entity> entities = new ArrayList<Entity>();
         for (int a = -1; a<2; a++){
             for (int b = -1; b<2; b++){
-                if (!(x==0&&a==-1||y==0&&b==-1||x==zoo.getWidth()&&a==1||y==zoo.getHeight()&&b==1||x==0&&y==0)){
+                if (!(x==0&&a==-1||y==0&&b==-1||x==zoo.getWidth()&&a==1||y==zoo.getHeight()&&b==1||x==0&&y==0 && (a==0&&b==0))){
                     entities.addAll(zoo.at(x+a, y+b));
                 }
             }
