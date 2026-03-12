@@ -11,7 +11,7 @@ public class Dog extends Animal{
         this.y=y;
         this.name=name;
         this.hunger=1000;
-        this.preferedDirection=(int)(Math.random()*4);
+        this.preferedDirection=(int)(Math.random()*4)-2;
     }
 
 
@@ -105,15 +105,19 @@ public class Dog extends Animal{
                 if ((Math.random()*4)<1){
                     if (x<=0){
                         directionX=1;
+                        preferedDirection=preferedDirection*-1;
                     }
                     if (y<=0){
                         directionY=1;
+                        preferedDirection=preferedDirection*-1;
                     }
                     if (x>=50){
                         directionX=-1;
+                        preferedDirection=preferedDirection*-1;
                     }
                     if (y>=30){
                         directionY=-1;
+                        preferedDirection=preferedDirection*-1;
                     }
                     if (directionX<0){
                         x--;
@@ -126,14 +130,14 @@ public class Dog extends Animal{
                         y++;
                     }
                 }else{
-                    if (this.preferedDirection>0){
-
+                    if (this.preferedDirection>-1){
+                        x++;
+                    }else if(this.preferedDirection>0){
+                        y++;
                     }else if(this.preferedDirection>1){
-
-                    }else if(this.preferedDirection>1){
-
+                        y--;
                     }else{
-
+                        x++;
                     }
                 }
             }
