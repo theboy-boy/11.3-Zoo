@@ -3,6 +3,7 @@ import java.awt.*;
 
 public class Dog extends Animal{
     private int lives;
+    private int preferedDirection;
     public Dog(String name, int x, int y, int hunger, boolean isSick){
         super("animal", 0, 0, 0, false);
         this.lives = 1;
@@ -10,6 +11,7 @@ public class Dog extends Animal{
         this.y=y;
         this.name=name;
         this.hunger=1000;
+        this.preferedDirection=(int)(Math.random()*4);
     }
 
 
@@ -64,11 +66,8 @@ public class Dog extends Animal{
     // }
     
     public void move(Zoo zoo){
-        int randomX = (int) (Math.random()*3)-1;
-        int randomY = (int) (Math.random()*3)-1;
-        double directionX = 0.0;
-        double directionY = 0.0;
-        int tries = 0;
+        int randomDirect = (int) (Math.random()*4);
+        boolean movedAway=false;
         ArrayList<Entity> nearEntities = this.getNeighbors(zoo);
             for (Entity e: nearEntities){
                 if (e instanceof Food){
@@ -78,30 +77,65 @@ public class Dog extends Animal{
                         this.eat((Food)e);
                     }
                 }
+                if (e instanceof Animal){
+                    this.x+=(this.x-e.getX());
+                    this.y+=(this.y-e.getY());
+                    movedAway=true;
+                    break;
+                }
             }
-            directionX+=randomX;
-            directionY+=randomY;
-            if (x<=0){
-                directionX++;
-            }
-            if (y<=0){
-                directionY++;
-            }
-            if (x>=20){
-                directionX--;
-            }
-            if (y>=10){
-                directionY--;
-            }
-            if (directionX<0){
-                x--;
-            }else if (directionX>0){
-                x++;
-            }
-            if (directionY<0){
-                y--;
-            }else if (directionY>0){
-                y++;
+
+            int directionX=0;
+            int directionY=0;
+            
+            if (movedAway==false){
+                if (randomDirect<2){
+                    if (randomDirect<1){
+                        directionX++;
+                    }else{
+                        directionX--;
+                    }
+                }else{
+                    if (randomDirect<3){
+                        directionY++;
+                    }else{
+                        directionY--;
+                    }
+                }
+                if ((Math.random()*4)<1){
+                    if (x<=0){
+                        directionX=1;
+                    }
+                    if (y<=0){
+                        directionY=1;
+                    }
+                    if (x>=50){
+                        directionX=-1;
+                    }
+                    if (y>=30){
+                        directionY=-1;
+                    }
+                    if (directionX<0){
+                        x--;
+                    }else if (directionX>0){
+                        x++;
+                    }
+                    if (directionY<0){
+                        y--;
+                    }else if (directionY>0){
+                        y++;
+                    }
+                }else{
+                    if (this.preferedDirection>0){
+
+                    }else if(this.preferedDirection>1){
+
+                    }else if(this.preferedDirection>1){
+
+                    }else{
+
+                    }
+                }
             }
            
 

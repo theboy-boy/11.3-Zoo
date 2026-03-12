@@ -85,10 +85,10 @@ public class Cat extends Animal{
         ArrayList<Entity> nearEntities = this.getNeighbors(zoo);
         movedAway=false;
             for (Entity e: nearEntities){
+                
                 if (e instanceof Food){
                     this.x=e.getX();
-                    this.y=e.getY();
-                    if (hunger>=25&&Math.random()*101>1){                   
+                    this.y=e.getY();                   
                     if (hunger>=25&&Math.random()*101>1){                   
                         this.eat((Food)e);
                     }
@@ -130,7 +130,7 @@ public class Cat extends Animal{
             }else if (directionY>0){
                 y++;
             }
-        }
+            }
 
             
                 
@@ -149,6 +149,7 @@ public class Cat extends Animal{
             
         
        
+        
     }
 
 }

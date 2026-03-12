@@ -1,3 +1,3 @@
-public class Rat {
+public class Rat extends Food{
     
 }
