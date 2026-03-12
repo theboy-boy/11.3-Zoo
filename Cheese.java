@@ -24,14 +24,15 @@ public class Cheese extends Food {
         if (nutrition == 10){
             animal.hunger+=10;
             this.nutrition=7;
-        }
-        if (nutrition == 7){
+        }else if (nutrition == 7){
             animal.hunger+=7;
             this.nutrition=5;
-        }
-        if (nutrition == 5){
+        }else if (nutrition == 5){
             animal.hunger+=5;
             this.alive=false;
+        }
+        if (rot==true){
+            animal.isSick=true;
         }
     }
 }
