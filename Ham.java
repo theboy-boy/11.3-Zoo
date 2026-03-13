@@ -1,9 +1,13 @@
 import java.util.*;
 import java.awt.*;
 public class Ham extends Food {
-    public Ham(String name, int x, int y, boolean isAnimal){
-        super("Edible", 0, 0, false);
+    public Ham(String name, int x, int y, boolean isAnimal, int age, boolean isVegtable, boolean rot){
+        super("Edible", 0, 0, false, 0, false, false);
         this.rot = false;
+        this.x=x;
+        this.y=y;
+        this.isAnimal=false;
+        this.name=name;
     }
     public void tick(Zoo zoo){
         age++;
