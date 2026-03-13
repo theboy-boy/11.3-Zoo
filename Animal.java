@@ -4,6 +4,7 @@ public abstract class Animal extends Entity{
 
     protected int hunger;
     protected boolean isSick;
+    protected int nutrition;
     public Animal(String name, int x, int y, int hunger, boolean isSick){
         super("animal", 0, 0);
         this.hunger = hunger;
@@ -16,6 +17,7 @@ public abstract class Animal extends Entity{
 
     abstract void eat(Food food);
     abstract void move(Zoo zoo);
+    abstract void beEaten(Animal animal);
 
     public ArrayList<Entity>getNeighbors(Zoo zoo){
         ArrayList<Entity> entities = new ArrayList<Entity>();

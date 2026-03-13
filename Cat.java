@@ -12,6 +12,10 @@ public class Cat extends Animal{
         this.name=name;
     }
 
+    public void beEaten(Animal animal){
+        
+    }
+
 
     // TODO: override the tick method
     public void tick(Zoo zoo){
@@ -72,6 +76,14 @@ public class Cat extends Animal{
             }
         }
     }
+    public void eat(Animal animal){
+        if (hunger > 25){
+            if (Math.random()*101 > 99){
+                animal.beEaten(this);
+                System.out.println(name+" the cat ate "+animal.name+"getting "+animal.nutrition+"nutrition points");
+            }
+        }
+    }
     // TODO: override the move method
     // public boolean inBound(ArrayList<ArrayList<Entity>> grid, int x, int y){
 
@@ -90,15 +102,23 @@ public class Cat extends Animal{
                 if (e instanceof Food){
                     this.x=e.getX();
                     this.y=e.getY();                   
-                    if (hunger>=25&&Math.random()*101>1){                   
+                    if (hunger<=25&&Math.random()*101>1){                   
                         this.eat((Food)e);
                     }
                 }
                 if (e instanceof Animal){
+                    if (e instanceof Rat){
+                       this.x=e.getX();
+                    this.y=e.getY();                   
+                    if (hunger<=25&&Math.random()*101>1){                   
+                    this.eat((Animal)e);
+                    } 
+                    }else{
                     this.x+=(this.x-e.getX());
                     this.y+=(this.y-e.getY());
                     movedAway=true;
                     break;
+                    }
                 }
 
 

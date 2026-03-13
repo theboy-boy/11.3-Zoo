@@ -5,9 +5,8 @@ public abstract class Food extends Entity{
     protected int nutrition;
     protected boolean isAnimal;
     protected int age;
-    protected boolean isVegtable;
     protected boolean rot;
-    public Food(String name, int x, int y, boolean isAnimal, int age, boolean isVegtable, boolean rot){
+    public Food(String name, int x, int y, boolean isAnimal, int age, boolean rot){
         super("Edible", 0, 0);
         
     }

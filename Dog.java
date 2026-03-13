@@ -14,6 +14,9 @@ public class Dog extends Animal{
         this.preferedDirection=(int)(Math.random()*4);
     }
 
+    public void beEaten(Animal animal){
+        
+    }
     public int getPreferedDirection() {
         return preferedDirection;
     }
@@ -81,7 +84,7 @@ public class Dog extends Animal{
         ArrayList<Entity> nearEntities = this.getNeighbors(zoo);
             for (Entity e: nearEntities){
                 if (e instanceof Food){
-                    if (hunger>=25&&Math.random()*101>1){
+                    if (hunger<=25&&Math.random()*101>1){
                         this.x=e.getX();
                         this.y=e.getY();              
                         this.eat((Food)e);
