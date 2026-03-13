@@ -1,11 +1,9 @@
 import java.util.*;
 import java.awt.*;
-public class Cheese extends Food {
-    public Cheese(String name, int x, int y, boolean isAnimal, int nutrition){
-        super("Edible", 0, 0, false, 10);
-        this.nutrition = nutrition;
+public class Ham extends Food {
+    public Ham(String name, int x, int y, boolean isAnimal){
+        super("Edible", 0, 0, false);
         this.rot = false;
-        
     }
     public void tick(Zoo zoo){
         age++;

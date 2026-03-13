@@ -47,8 +47,9 @@ public class Cat extends Animal{
             hunger=100;
         }
         hunger--;
+        if(age%2==1){
         this.move(zoo);
-        this.move(zoo);
+        }
         
 
     }

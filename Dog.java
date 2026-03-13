@@ -11,9 +11,17 @@ public class Dog extends Animal{
         this.y=y;
         this.name=name;
         this.hunger=1000;
-        this.preferedDirection=(int)(Math.random()*4)-2;
+        this.preferedDirection=(int)(Math.random()*4);
     }
 
+    public int getPreferedDirection() {
+        return preferedDirection;
+    }
+
+
+    public void setPreferedDirection(int preferedDirection) {
+        this.preferedDirection = preferedDirection;
+    }
 
     // TODO: override the tick method
     public void tick(Zoo zoo){
@@ -37,7 +45,9 @@ public class Dog extends Animal{
             }
         }
         hunger--;
+        if (age%2==0){
         this.move(zoo);
+        }
         
 
     }
@@ -66,7 +76,7 @@ public class Dog extends Animal{
     // }
     
     public void move(Zoo zoo){
-        int randomDirect = (int) (Math.random()*4);
+        int randomDirect = (int) (Math.random()*6);
         boolean movedAway=false;
         ArrayList<Entity> nearEntities = this.getNeighbors(zoo);
             for (Entity e: nearEntities){
@@ -83,58 +93,60 @@ public class Dog extends Animal{
                     movedAway=true;
                     break;
                 }
+                if(e instanceof Dog){
+                    int temp=this.preferedDirection;
+                    this.preferedDirection=((Dog)e).getPreferedDirection();
+                    ((Dog)e).setPreferedDirection(temp);            
+                }
             }
 
             int directionX=0;
             int directionY=0;
             
             if (movedAway==false){
-                if (randomDirect<2){
+                if (randomDirect<3){
                     if (randomDirect<1){
-                        directionX++;
+                        directionX=1;
+                    }if (randomDirect<2){
+                        directionX=-1;
                     }else{
-                        directionX--;
+                        directionX=0;
                     }
                 }else{
-                    if (randomDirect<3){
-                        directionY++;
+                    if (randomDirect<4){
+                        directionY=1;
+                    }if (randomDirect<5){
+                        directionY=-1;
                     }else{
-                        directionY--;
+                        directionY=0;
                     }
                 }
+                
                 if ((Math.random()*4)<1){
                     if (x<=0){
                         directionX=1;
-                        preferedDirection=preferedDirection*-1;
+                        preferedDirection=3;
                     }
                     if (y<=0){
                         directionY=1;
-                        preferedDirection=preferedDirection*-1;
+                        preferedDirection=1;
                     }
                     if (x>=50){
                         directionX=-1;
-                        preferedDirection=preferedDirection*-1;
+                        preferedDirection=0;
                     }
                     if (y>=30){
                         directionY=-1;
-                        preferedDirection=preferedDirection*-1;
+                        preferedDirection=2;
                     }
-                    if (directionX<0){
-                        x--;
-                    }else if (directionX>0){
-                        x++;
-                    }
-                    if (directionY<0){
-                        y--;
-                    }else if (directionY>0){
-                        y++;
-                    }
+                    x+=directionX;
+                    y+=directionY;
                 }else{
-                    if (this.preferedDirection>-1){
-                        x++;
-                    }else if(this.preferedDirection>0){
+                    if (this.preferedDirection<1){
+                        x--;    
+                    }else if(this.preferedDirection<2){
                         y++;
-                    }else if(this.preferedDirection>1){
+                    }else if(this.preferedDirection<3){
                         y--;
                     }else{
                         x++;
